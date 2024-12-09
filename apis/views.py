@@ -1,6 +1,6 @@
 from django.shortcuts import render , HttpResponse
 
 def index(request):
-  return HttpResponse('hi apis is here  .....  ')
+  return render(request,'apis/index.html')
 
 # Create your views here.

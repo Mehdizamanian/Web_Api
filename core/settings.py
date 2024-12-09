@@ -37,19 +37,63 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'rest_framework', 
+    "corsheaders", # pip install django-cors-headers~=3.10.0
     'apis',
 ]
+
+
+# Rest config classes must be added 
+REST_FRAMEWORK = {
+  
+    "DEFAULT_PERMISSION_CLASSES": [
+      # it makes default permision class is_authenticated inactive or the same unrestricted for production 
+        "rest_framework.permissions.AllowAny",
+        
+    ], 
+}
+
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware", # django-cors-headers Middlewar added & located above CommonMiddleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+
+
+# create a CORS_ALLOWED_ORIGINS config at the bottom of the file .
+#it lets diffrent urls in using of front and back combine without security issues
+CORS_ALLOWED_ORIGINS = (
+"http://localhost:3000",#frontend url 
+"http://localhost:8000",#backend url
+)
+
+
+
+# csrf protection broker while using form in react to send data in backend 
+CSRF_TRUSTED_ORIGINS = ["localhost:3000"]
+
+
+
+#And that’s it! Our back-end is now complete and capable of communicating with any front-end
+#that uses port 3000
+#  If our front-end of choice dictates a different port that can easily be updated
+# in our code.
+
+
+
+
+
 
 ROOT_URLCONF = 'core.urls'
 

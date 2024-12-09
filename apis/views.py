@@ -6,6 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import BookSerializer
 
+from rest_framework.generics import ListAPIView , RetrieveAPIView
 
 # jinja views
 
@@ -17,7 +18,7 @@ def index(request):
 
 
 
-# Api views
+# Api function views
 
 @api_view(['GET'])
 def book_list(request):
@@ -31,8 +32,6 @@ def book_detail(request,pk):
   book=Book.objects.get(id=pk)
   book_serializer=BookSerializer(book,many=False)
   return Response(book_serializer.data)
-
-
 
 
 
@@ -64,3 +63,18 @@ def book_delete(request,pk):
    instance=Book.objects.get(id=pk)
    instance.delete()
    return Response("book deleted successfully .")
+
+
+
+
+
+#api class-base-views 
+
+class ListBook(ListAPIView):
+   queryset=Book.objects.all()
+   serializer_class=BookSerializer
+
+
+class DetailBook (RetrieveAPIView):
+   queryset=Book.objects.all()
+   serializer_class=BookSerializer

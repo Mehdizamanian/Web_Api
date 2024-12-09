@@ -6,8 +6,31 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <h1 class="text-3xl font-bold underline">
-    Hello im Index 
-  </h1>
+
+  <div class="w-fullscreen bg-slate-300">
+    <h1 class="text-3xl font-bold text-center">
+      all Books 
+    </h1>
+  </div>
+
+
+  <br/>
+
+
+<ul>
+  {% for book in books %}
+  <li class="w-fullscreen text-center my-20">
+   {{book.title}}
+   {{book.subtitle}}
+   {{book.author}}
+   {{book.isbn}}
+  </li>
+  
+  {% endfor %}
+
+
+
+</ul>
+
 </body>
 </html>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework', 
     "corsheaders", # pip install django-cors-headers~=3.10.0
     'apis',
+    'blog',
 ]
 
 
@@ -73,15 +74,17 @@ MIDDLEWARE = [
 
 # create a CORS_ALLOWED_ORIGINS config at the bottom of the file .
 #it lets diffrent urls in using of front and back combine without security issues
-CORS_ALLOWED_ORIGINS = (
-"http://localhost:3000",#frontend url 
-"http://localhost:8000",#backend url
-)
+
+# CORS_ALLOWED_ORIGINS = (
+# "http://localhost:3000",#frontend url 
+# "http://localhost:8000",#backend url
+# )
 
 
 
 # csrf protection broker while using form in react to send data in backend 
-CSRF_TRUSTED_ORIGINS = ["localhost:3000"]
+
+# CSRF_TRUSTED_ORIGINS = ["localhost:3000"]
 
 
 

@@ -25,6 +25,14 @@ SECRET_KEY = 'django-insecure-u+ldq1zi2g)wgm*(aie7@tq8jw%tvxo)x)7clv4$aw^hm!tt-3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+
+# custome user model ising phone verification
+AUTH_USER_MODEL='accounts.User'
+
+
+
+
 ALLOWED_HOSTS = []
 
 
@@ -41,6 +49,7 @@ INSTALLED_APPS = [
     "corsheaders", # pip install django-cors-headers~=3.10.0
     'apis',
     'blog',
+    'accounts'
 ]
 
 

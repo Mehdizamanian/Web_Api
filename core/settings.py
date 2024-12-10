@@ -48,8 +48,8 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
   
     "DEFAULT_PERMISSION_CLASSES": [
-      # it makes default permision class is_authenticated inactive or the same unrestricted for production 
-        "rest_framework.permissions.AllowAny",
+      #AllowAny makes default permision class is_authenticated inactive or the same unrestricted for production 
+        "rest_framework.permissions.IsAdminUser",
         
     ], 
 }

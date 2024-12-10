@@ -8,6 +8,9 @@ from .serializers import BookSerializer
 
 from rest_framework.generics import ListAPIView , RetrieveAPIView
 
+from .permissions import IsAuthorOrReadOnly # my custome permssion
+
+
 # jinja views
 
 def index(request):
@@ -71,10 +74,12 @@ def book_delete(request,pk):
 #api class-base-views 
 
 class ListBook(ListAPIView):
+   permission_classes = (IsAuthorOrReadOnly,) # my custome permission given
    queryset=Book.objects.all()
    serializer_class=BookSerializer
 
 
 class DetailBook (RetrieveAPIView):
+   permission_classes = (IsAuthorOrReadOnly,) # my custome permission given 
    queryset=Book.objects.all()
    serializer_class=BookSerializer

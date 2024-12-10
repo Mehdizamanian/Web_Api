@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apis.urls')),
     path('blog/', include('blog.urls')),
+    path("api-auth/login/login/login/", include("rest_framework.urls")), # rest_framework login url
 ]
 
 

@@ -47,11 +47,23 @@ INSTALLED_APPS = [
 # Rest config classes must be added 
 REST_FRAMEWORK = {
   
+    # permission types
+    
     "DEFAULT_PERMISSION_CLASSES": [
       #AllowAny makes default permision class is_authenticated inactive or the same unrestricted for production 
         "rest_framework.permissions.IsAdminUser",
         
     ], 
+
+
+    # Authentication types 
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+      
+        'rest_framework.authentication.BasicAuthentication',
+
+    ]
+
 }
 
 

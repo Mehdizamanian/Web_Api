@@ -83,3 +83,6 @@ class DetailBook (RetrieveAPIView):
    permission_classes = (IsAuthorOrReadOnly,) # my custome permission given 
    queryset=Book.objects.all()
    serializer_class=BookSerializer
+
+
+# everything working well

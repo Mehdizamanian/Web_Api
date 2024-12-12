@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework', 
-    "corsheaders", # pip install django-cors-headers~=3.10.0
+    'rest_framework.authtoken',    #authtoken Authntication in progress
+    "corsheaders", 
     'apis',
     'blog',
 ]
@@ -61,7 +62,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
       
         # 'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication', #migrate 
 
     ]
 

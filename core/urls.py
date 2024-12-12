@@ -18,13 +18,24 @@ from django.contrib import admin
 from django.urls import path,include 
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.authtoken import views
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apis.urls')),
     path('blog/', include('blog.urls')),
-    path("api-auth/login/login/login/", include("rest_framework.urls")), # rest_framework login url
+
+
+    # #basic and session authentication used this login end point . commited for using authtoken 
+    # path("api-auth/login/login/login/", include("rest_framework.urls")), # rest_framework login url 
+    
+
+    #authtoken pannel using Postmethod to recive token through drf_create_token  or dj admin pannel or Rester
+    path('api-token-auth/', views.obtain_auth_token), 
+
+
 ]
 
 

@@ -20,6 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.authtoken import views
 
+# jwt
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from rest_framework_simplejwt.views import TokenVerifyView
+
 
 
 urlpatterns = [
@@ -27,13 +34,13 @@ urlpatterns = [
     path('', include('apis.urls')),
     path('blog/', include('blog.urls')),
 
+    # dj_rest_auth login and logout api and registration wich registration didnt worked ..
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),  #then migrate 
 
-    # #basic and session authentication used this login end point . commited for using authtoken 
-    # path("api-auth/login/login/login/", include("rest_framework.urls")), # rest_framework login url 
-    
-
-    #authtoken pannel using Postmethod to recive token through drf_create_token  or dj admin pannel or Rester
-    path('api-token-auth/', views.obtain_auth_token), 
+    # JWT end points bellow 
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),#post method user and password in jsonformat by rester Header to get refresh and access token 
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),#used for generating new accesstoken
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),#used to login with accessstoken
 
 
 ]

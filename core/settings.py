@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'rest_framework', 
-    'rest_framework.authtoken',    #authtoken Authntication in progress
+    'rest_framework.authtoken',
+    
+    'dj_rest_auth',
+
+
+    'rest_framework_simplejwt',
     "corsheaders", 
     'apis',
     'blog',
@@ -61,9 +67,7 @@ REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
       
-        # 'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication', #migrate 
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
 
     ]
 

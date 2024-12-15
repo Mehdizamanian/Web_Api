@@ -49,7 +49,7 @@ REST_FRAMEWORK = {
   
     "DEFAULT_PERMISSION_CLASSES": [
       #AllowAny makes default permision class is_authenticated inactive or the same unrestricted for production 
-        "rest_framework.permissions.IsAdminUser",
+        "rest_framework.permissions.AllowAny",
         
     ], 
 }
@@ -75,11 +75,11 @@ MIDDLEWARE = [
 # create a CORS_ALLOWED_ORIGINS config at the bottom of the file .
 #it lets diffrent urls in using of front and back combine without security issues
 
-# CORS_ALLOWED_ORIGINS = (
-# "http://localhost:3000",#frontend url 
-# "http://localhost:8000",#backend url
-# )
+CORS_ALLOWED_ORIGINS = [
+  
+    "http://localhost:3000",
 
+]
 
 
 # csrf protection broker while using form in react to send data in backend 

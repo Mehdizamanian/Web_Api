@@ -21,7 +21,7 @@ function App() {
       <header className="App-header">
        
         <h3>
-          Full-Stack Web Application developed with Django & React 
+          Full-Stack Web Application Developed with Django & React 
         </h3>
 
 

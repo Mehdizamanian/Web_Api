@@ -38,9 +38,22 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework', 
-    "corsheaders", # pip install django-cors-headers~=3.10.0
+    "corsheaders", # 
+    'rest_framework.authtoken', #first package restframework  ...login and logout 
+
+    # third packae django-allauth~=0.48.0 to use registeration endpoint in second package 
+    "allauth", 
+    "allauth.account", 
+    "allauth.socialaccount", 
+    "dj_rest_auth",#second package tokenbase  by authtoken  ... login and logout 
+    "dj_rest_auth.registration", # django-allauth
+
+
+    'drf_spectacular', # make sechema and documentaions for machines and humans 
+
     'apis',
     'blog',
+    
 ]
 
 
@@ -49,9 +62,16 @@ REST_FRAMEWORK = {
   
     "DEFAULT_PERMISSION_CLASSES": [
       #AllowAny makes default permision class is_authenticated inactive or the same unrestricted for production 
-        "rest_framework.permissions.AllowAny",
-        
+        "rest_framework.permissions.AllowAny",  
     ], 
+
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+      "rest_framework.authentication.SessionAuthentication",
+      "rest_framework.authentication.TokenAuthentication",
+    ],
+
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # drf_spectacular setting
+   
 }
 
 
@@ -80,6 +100,19 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 
 ]
+
+
+
+# drf_spectacular setting anduse this command "python manage.py spectacular --file schema.yml "
+# tip=rest_framework.authtoken needed to get use drf_spectacular
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Library and blog app ',
+    'DESCRIPTION': 'this app built with Django & React',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
+
 
 
 # csrf protection broker while using form in react to send data in backend 
@@ -111,10 +144,15 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.template.context_processors.request", # django-allauth~=0.48.0
             ],
         },
     },
 ]
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # django-allauth~=0.48.0
+SITE_ID = 1 # django-allauth~=0.48.0
+
 
 WSGI_APPLICATION = 'core.wsgi.application'
 

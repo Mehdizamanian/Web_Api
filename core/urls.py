@@ -19,12 +19,26 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from rest_framework.authtoken import views
+
+from drf_spectacular.views import SpectacularAPIView,SpectacularRedocView,SpectacularSwaggerView # schema  python manage.py spectacular --file schema.yml
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apis.urls')),
     path('blog/', include('blog.urls')),
-    path("api-auth/login/login/login/", include("rest_framework.urls")), # rest_framework login url
+
+    # path("api-auth/login/login/login/", include("rest_framework.urls")), # rest_framework login url
+    # path('api-token-auth/', views.obtain_auth_token),
+
+    path("api-auth/", include("rest_framework.urls")), #login logout in by restframework....
+    path("api/v1/dj-rest-auth/", include("dj_rest_auth.urls")), #login logout ... in by dj-rest-auth
+    path("api/v1/dj-rest-auth/registration/",include("dj_rest_auth.registration.urls")),#registration by dj-rest-auth and # django-allauth~=0.48.0 then migrate 
+
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"), # schema.yml downloder for machine 
+    path("api/schema/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc",),#schema authentication view
+    path("api/schema/swagger-ui/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),#schema endpoints view
 ]
 
 

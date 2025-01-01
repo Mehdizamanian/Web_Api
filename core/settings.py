@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-u+ldq1zi2g)wgm*(aie7@tq8jw%tvxo)x)7clv4$aw^hm!tt-3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mehdizamanian23webapi.pythonanywhere.com']
 
 
 # Application definition
@@ -37,33 +37,33 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework', 
-    "corsheaders", # 
-    'rest_framework.authtoken', #first package restframework  ...login and logout 
+    'rest_framework',
+    "corsheaders", #
+    'rest_framework.authtoken', #first package restframework  ...login and logout
 
-    # third packae django-allauth~=0.48.0 to use registeration endpoint in second package 
-    "allauth", 
-    "allauth.account", 
-    "allauth.socialaccount", 
-    "dj_rest_auth",#second package tokenbase  by authtoken  ... login and logout 
+    # third packae django-allauth~=0.48.0 to use registeration endpoint in second package
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "dj_rest_auth",#second package tokenbase  by authtoken  ... login and logout
     "dj_rest_auth.registration", # django-allauth
 
 
-    'drf_spectacular', # make sechema and documentaions for machines and humans 
+    'drf_spectacular', # make sechema and documentaions for machines and humans
 
     'apis',
     'blog',
-    
+
 ]
 
 
-# Rest config classes must be added 
+# Rest config classes must be added
 REST_FRAMEWORK = {
-  
+
     "DEFAULT_PERMISSION_CLASSES": [
-      #AllowAny makes default permision class is_authenticated inactive or the same unrestricted for production 
-        "rest_framework.permissions.AllowAny",  
-    ], 
+      #AllowAny makes default permision class is_authenticated inactive or the same unrestricted for production
+        "rest_framework.permissions.AllowAny",
+    ],
 
     "DEFAULT_AUTHENTICATION_CLASSES": [
       "rest_framework.authentication.SessionAuthentication",
@@ -71,7 +71,7 @@ REST_FRAMEWORK = {
     ],
 
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # drf_spectacular setting
-   
+
 }
 
 
@@ -96,7 +96,7 @@ MIDDLEWARE = [
 #it lets diffrent urls in using of front and back combine without security issues
 
 CORS_ALLOWED_ORIGINS = [
-  
+
     "http://localhost:3000",
 
 ]
@@ -115,7 +115,7 @@ SPECTACULAR_SETTINGS = {
 
 
 
-# csrf protection broker while using form in react to send data in backend 
+# csrf protection broker while using form in react to send data in backend
 
 # CSRF_TRUSTED_ORIGINS = ["localhost:3000"]
 
@@ -208,7 +208,7 @@ STATIC_ROOT = BASE_DIR/"static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "staticfiles",
-    
+
 ]
 
 

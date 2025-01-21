@@ -8,9 +8,23 @@ from .serializers import Post_serializer, Category_serializer , Comment_serializ
 
 
 class PostViewSet(ModelViewSet):
-  queryset=Post.objects.all()
+  #queryset=Post.objects.all()
   serializer_class=Post_serializer
+
+  # Actions
+  def get_queryset(self):
+      posts=Post.objects.all()
+      return posts
   
+  # filtering data by retrive method and using param
+  def retrieve(self, request, *args, **kwargs):
+     param=kwargs
+     print(param['pk'])
+     posts=Post.objects.filter(title=param['pk'])
+     serializer=Post_serializer(posts,many=True)
+     return Response(serializer.data)
+  
+
 
 class CategoryViewSet(ModelViewSet):
   queryset=Category.objects.all()
